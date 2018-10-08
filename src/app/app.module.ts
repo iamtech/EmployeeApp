@@ -11,11 +11,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { TaskHistoryComponent } from './task-history/task-history.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    TaskHistoryComponent
   ],
   imports: [
     BrowserModule,
