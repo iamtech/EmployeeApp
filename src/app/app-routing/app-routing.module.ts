@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
 import { TaskHistoryComponent } from '../task-history/task-history.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 const routes: Routes = [
   { path: 'employeelist', component: EmployeeListComponent },
-  { path: 'taskhistory', component: TaskHistoryComponent }
+  { path: 'taskhistory', component: TaskHistoryComponent },
+  { path: 'sidebar', component: SidebarComponent }
 ];
 
 @NgModule({
