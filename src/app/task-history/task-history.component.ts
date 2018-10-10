@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import * as d3 from 'd3';
 import * as Chart from 'chart.js';
 
@@ -10,34 +12,48 @@ import * as Chart from 'chart.js';
 export class TaskHistoryComponent implements OnInit {
  // @ViewChild('myChart') Chart: ElementRef;
   data: any;
+  dataSource;
+  msgRequestUrl = 'http://localhost:8098/yeardata';
+  restItems: any;
   
-  constructor() {
+  constructor(private http: HttpClient) {
    }
 
    ngOnInit() {
+
+    let obs = this.http.get(this.msgRequestUrl);
+    obs.pipe(map(data => data))
+       .subscribe(restItems => {
+        this.restItems = restItems;
+        console.log(this.restItems);
+        this.displayChart();
+      });
+
+    
+  }
+
+   displayChart(){
     var  ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
        type: 'bar',
        data: {
-           labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+           labels: ["2014", "2015", "2016", "2017", "2018"],
            datasets: [{
-               label: '# of Votes',
-               data: [12, 19, 3, 5, 2, 3],
+               label: '# of Tickets per Year',
+               data: this.restItems,
                backgroundColor: [
                    'rgba(255, 99, 132, 0.2)',
                    'rgba(54, 162, 235, 0.2)',
                    'rgba(255, 206, 86, 0.2)',
                    'rgba(75, 192, 192, 0.2)',
-                   'rgba(153, 102, 255, 0.2)',
-                   'rgba(255, 159, 64, 0.2)'
+                   'rgba(153, 102, 255, 0.2)'
                ],
                borderColor: [
                    'rgba(255,99,132,1)',
                    'rgba(54, 162, 235, 1)',
                    'rgba(255, 206, 86, 1)',
                    'rgba(75, 192, 192, 1)',
-                   'rgba(153, 102, 255, 1)',
-                   'rgba(255, 159, 64, 1)'
+                   'rgba(153, 102, 255, 1)'
                ],
                borderWidth: 1
            }]
@@ -53,6 +69,6 @@ export class TaskHistoryComponent implements OnInit {
        }
    });
    console.log(myChart);
-  }
+   }
 
 }
