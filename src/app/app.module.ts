@@ -13,19 +13,24 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { TaskHistoryComponent } from './task-history/task-history.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
+import { AuthService } from './auth/auth.service'
+import { TokenStorage } from './auth/token.storage'
+
 import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuModule, MatInputModule, MatButtonToggleModule,
   MatProgressSpinnerModule, MatSelectModule, MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatToolbarModule,
   MatTabsModule, MatSidenavModule, MatTooltipModule, MatRippleModule, MatRadioModule, MatGridListModule,
   MatDatepickerModule, MatNativeDateModule, MatSliderModule, MatAutocompleteModule, MatTableModule,MatCheckboxModule } from '@angular/material';
 
   import 'hammerjs';
+import { LoginComponent } from './login/login.component';
   
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
     TaskHistoryComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,7 @@ import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuMo
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService, TokenStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
