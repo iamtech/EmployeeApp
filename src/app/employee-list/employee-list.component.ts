@@ -19,7 +19,8 @@ export class EmployeeListComponent implements OnInit {
 
   displayedColumns: string[] = ['userId', 'name'];
   dataSource;
-  msgRequestUrl = 'http://localhost:8097/profiles';
+  //msgRequestUrl = 'http://localhost:8097/profiles';
+  msgRequestUrl = 'http://localhost:8093/employeeUI/profiles';
   restItems: any;
 
   constructor(private http: HttpClient) {}

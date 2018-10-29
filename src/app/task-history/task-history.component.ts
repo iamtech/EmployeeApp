@@ -13,7 +13,7 @@ export class TaskHistoryComponent implements OnInit {
  // @ViewChild('myChart') Chart: ElementRef;
   data: any;
   dataSource;
-  msgRequestUrl = 'http://localhost:8098/yeardata';
+  msgRequestUrl = 'http://localhost:8093/ticketUI/yeardata';
   restItems: any;
   
   constructor(private http: HttpClient) {

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -15,6 +15,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { AuthService } from './auth/auth.service'
 import { TokenStorage } from './auth/token.storage'
+import { Interceptor } from "./auth/inteceptor";
 
 import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuModule, MatInputModule, MatButtonToggleModule,
   MatProgressSpinnerModule, MatSelectModule, MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatToolbarModule,
@@ -65,7 +66,11 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthService, TokenStorage],
+  providers: [AuthService, TokenStorage,
+    {provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi : true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,9 +8,12 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
-  { path: 'employeelist', component: EmployeeListComponent },
-  { path: 'taskhistory', component: TaskHistoryComponent },
-  { path: 'sidebar', component: SidebarComponent },
+  { path: 'sidebar', component: SidebarComponent  ,
+  children: [
+    {path: '', redirectTo: 'employeelist', pathMatch: 'full'},
+    { path: 'employeelist', component: EmployeeListComponent },
+    { path: 'taskhistory', component: TaskHistoryComponent },
+  ]},
   { path: '', component: LoginComponent }
 ];
 
