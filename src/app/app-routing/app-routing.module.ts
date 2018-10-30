@@ -10,7 +10,7 @@ import { LoginComponent } from '../login/login.component';
 const routes: Routes = [
   { path: 'sidebar', component: SidebarComponent  ,
   children: [
-    {path: '', redirectTo: 'employeelist', pathMatch: 'full'},
+    { path: '', redirectTo: 'employeelist', pathMatch: 'full'},
     { path: 'employeelist', component: EmployeeListComponent },
     { path: 'taskhistory', component: TaskHistoryComponent },
   ]},

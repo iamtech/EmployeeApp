@@ -16,6 +16,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthService } from './auth/auth.service'
 import { TokenStorage } from './auth/token.storage'
 import { Interceptor } from "./auth/inteceptor";
+import { UserService } from './auth/user.service'
+
 
 import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuModule, MatInputModule, MatButtonToggleModule,
   MatProgressSpinnerModule, MatSelectModule, MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatToolbarModule,
@@ -66,7 +68,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthService, TokenStorage,
+  providers: [AuthService, TokenStorage,UserService,
     {provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
       multi : true}

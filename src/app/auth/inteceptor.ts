@@ -14,6 +14,8 @@ const TOKEN_HEADER_KEY = 'Authorization';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
+  userScope:string;
+
   constructor(private token: TokenStorage, private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
@@ -37,7 +39,7 @@ export class Interceptor implements HttpInterceptor {
       if (err.status === 401 || err.status === 403) {
         //navigate /delete cookies or whatever
         console.log('handled error ' + err.status);
-        this.router.navigate(['']);
+        //this.router.navigate(['']);
         // if you've caught / handled the error, you don't want to rethrow it unless you also want downstream consumers to have to handle it as well.
         return of(err.message);
       }
