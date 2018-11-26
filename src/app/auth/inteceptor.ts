@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import {HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent,
   HttpResponse, HttpUserEvent, HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import {TokenStorage} from './token.storage';
+import {UserService} from './user.service';
 //import { tap } from 'rxjs/operators';
 import {tap} from 'rxjs/internal/operators';
 import { catchError } from 'rxjs/operators';
@@ -14,9 +15,9 @@ const TOKEN_HEADER_KEY = 'Authorization';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
-  userScope:string;
+  errStatus:number;
 
-  constructor(private token: TokenStorage, private router: Router) { }
+  constructor(private token: TokenStorage, private router: Router, private userService: UserService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
@@ -39,11 +40,22 @@ export class Interceptor implements HttpInterceptor {
       if (err.status === 401 || err.status === 403) {
         //navigate /delete cookies or whatever
         console.log('handled error ' + err.status);
-        //this.router.navigate(['']);
+        this.userService.errStatusCode = err.status;
+        this.router.navigate(['']);
         // if you've caught / handled the error, you don't want to rethrow it unless you also want downstream consumers to have to handle it as well.
         return of(err.message);
       }
       throw err;
     }
+
+  get errStatusCode():number{
+      return this.errStatus;
+  }
+
+  set errStatusCode(code:number){
+    if(code != undefined){
+      this.errStatus = code;
+    }
+  }
 
 }

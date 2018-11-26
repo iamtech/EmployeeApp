@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -17,6 +19,7 @@ import { AuthService } from './auth/auth.service'
 import { TokenStorage } from './auth/token.storage'
 import { Interceptor } from "./auth/inteceptor";
 import { UserService } from './auth/user.service'
+
 
 
 import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuModule, MatInputModule, MatButtonToggleModule,
@@ -66,7 +69,8 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [AuthService, TokenStorage,UserService,
     {provide: HTTP_INTERCEPTORS,

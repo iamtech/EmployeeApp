@@ -12,8 +12,12 @@
   <mat-card-header>
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
+  
+     
+  <div class="loginError" *ngIf="isInvalidUser">Incorrect email or password</div>
+ 
   <mat-card-content>
-    <form class="example-form">
+    <form class="example-form" (keyup.enter)= "login()">
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>

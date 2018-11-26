@@ -1,4 +1,4 @@
-.example-icon {
+  .example-icon {
     padding: 0 14px;
   }
   
@@ -21,4 +21,9 @@
 
   .mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
     background-color: #e8825f;
-}
+  }
+
+  .loginError {
+    color: red;
+    font-style: italic;
+  }
