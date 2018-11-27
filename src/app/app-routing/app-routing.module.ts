@@ -14,13 +14,13 @@ const routes: Routes = [
     { path: 'employeelist', component: EmployeeListComponent },
     { path: 'taskhistory', component: TaskHistoryComponent },
   ]},
-  { path: '', component: LoginComponent }
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})
   ],
   exports: [ RouterModule 
   ],

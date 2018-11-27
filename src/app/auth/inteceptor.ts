@@ -41,7 +41,8 @@ export class Interceptor implements HttpInterceptor {
         //navigate /delete cookies or whatever
         console.log('handled error ' + err.status);
         this.userService.errStatusCode = err.status;
-        this.router.navigate(['']);
+        let nav = this.router.navigate(['login']);
+        console.log('nav::',nav);
         // if you've caught / handled the error, you don't want to rethrow it unless you also want downstream consumers to have to handle it as well.
         return of(err.message);
       }
