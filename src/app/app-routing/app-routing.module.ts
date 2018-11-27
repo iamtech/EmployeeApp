@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'employeelist', component: EmployeeListComponent },
     { path: 'taskhistory', component: TaskHistoryComponent },
   ]},
-  { path: 'login', component: LoginComponent }
+  { path: '', component: LoginComponent }
 ];
 
 @NgModule({
