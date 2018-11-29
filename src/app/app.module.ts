@@ -26,9 +26,13 @@ import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuMo
   MatProgressSpinnerModule, MatSelectModule, MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatToolbarModule,
   MatTabsModule, MatSidenavModule, MatTooltipModule, MatRippleModule, MatRadioModule, MatGridListModule,
   MatDatepickerModule, MatNativeDateModule, MatSliderModule, MatAutocompleteModule, MatTableModule,MatCheckboxModule } from '@angular/material';
+ 
+import {DragDropModule} from '@angular/cdk/drag-drop';  
 
-  import 'hammerjs';
+import 'hammerjs';
 import { LoginComponent } from './login/login.component';
+import { ManageTasksComponent } from './manage-tasks/manage-tasks.component';
+import { NgGridModule } from 'angular2-grid';
   
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import { LoginComponent } from './login/login.component';
     EmployeeListComponent,
     TaskHistoryComponent,
     SidebarComponent,
-    LoginComponent
+    LoginComponent,
+    ManageTasksComponent
   ],
   imports: [
     BrowserModule,
@@ -65,12 +70,14 @@ import { LoginComponent } from './login/login.component';
     MatNativeDateModule,
     MatSliderModule,
     MatAutocompleteModule,
+    DragDropModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgGridModule
   ],
   providers: [AuthService, TokenStorage,UserService,
     {provide: HTTP_INTERCEPTORS,

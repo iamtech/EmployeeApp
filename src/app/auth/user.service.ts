@@ -7,6 +7,7 @@ export class UserService {
   errStatus:number;
 
   get userRole():string[]{
+    this.uRole = JSON.parse(sessionStorage.getItem("userRole"))
       return this.uRole;
   }
 
@@ -17,6 +18,7 @@ export class UserService {
   }
 
   get isAdmin():boolean{
+    this.uRole = JSON.parse(sessionStorage.getItem("userRole"))
     return this.uRole.includes('ROLE_ADMIN');
   }
 

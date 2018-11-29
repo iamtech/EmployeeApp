@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
         if (tokenInfo.scopes != null) {
           console.log('tokenInfo ::', tokenInfo.scopes.toString());
           this.userRole = tokenInfo.scopes;
-          this.userservice.userRole = this.userRole;
+          //this.userservice.userRole = this.userRole;
+          sessionStorage.setItem("userRole",JSON.stringify(this.userRole));
           this.isInvalidRole = false;
           this.isInvalidUser = false;
         }
